@@ -7,10 +7,9 @@
 sensor_file = open("Output.txt", "r")
 # cast string to int, hopefully
 sensor_value = int(sensor_file.read())
+sensor_file.close()
 
 if sensor_value == 1:
     print("Purchase authenticated!\nDispensing WiFi Access code")
 else:
     print("Purchase invalid!")
-
-sensor_file.close()
