@@ -11,7 +11,7 @@ def load_key():
     return open("secret.key","rb").read()
 
 #encrypt the message
-def encrypt_message(message):
+def encrypt_message():
 message = "message I want to encrypt".encode()
 f = Fernet(key)
 encrypted_message = f.encrypt(message)
