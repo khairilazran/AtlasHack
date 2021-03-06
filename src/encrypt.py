@@ -1,4 +1,5 @@
 from cryptography.fernet import Fernet
+import pyqrcode
 
 #generate the encryption key 
 def generate_key():
@@ -12,8 +13,11 @@ def load_key():
 
 #encrypt the message
 def encrypt_message(message):
-message = "message I want to encrypt".encode()
-f = Fernet(key)
-encrypted_message = f.encrypt(message)
-
+    generate_key()
+    key = load_key()
+    f = Fernet(key)
+    encrypted_message = f.encrypt(message.encode())
+    big_code = pyqrcode.create(encrypted_message, error='L', version=27, mode='binary')
+    big_code.png('new.png', scale=4, module_color=[0, 0, 0, 255], background=[0xff, 0xff, 0xcc])
+    big_code.show()
 
